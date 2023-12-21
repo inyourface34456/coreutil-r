@@ -1,1 +1,1 @@
-mv coreutil-source
+mv coreutil-source/target/release/
