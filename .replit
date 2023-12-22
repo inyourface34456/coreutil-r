@@ -1,4 +1,4 @@
-run = "cargo fmt && cargo build --release"
+run = "cd coreutil-source && cargo fmt && cargo build --release"
 hidden = ["target", ".cargo"]
 
 entrypoint = "src/main.rs"

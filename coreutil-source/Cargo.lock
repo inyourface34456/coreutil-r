@@ -69,15 +69,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cat2"
-version = "0.1.0"
-dependencies = [
- "clap",
- "getch",
- "regex",
-]
-
-[[package]]
 name = "clap"
 version = "4.4.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"

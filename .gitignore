@@ -1,2 +1,3 @@
-coreutils-source/target
-*/*.lock
+**/target
+coreutil-source/Cargo.lock
+*/*.cargo-lock
