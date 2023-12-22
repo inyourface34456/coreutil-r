@@ -1,3 +1,6 @@
 **/target
 coreutil-source/Cargo.lock
 */*.cargo-lock
+coreutil-bin/*
+.cargo
+replit.nix

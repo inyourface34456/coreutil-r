@@ -1,5 +1,6 @@
-run = "cd coreutil-source && cargo fmt && cargo build --release"
-hidden = ["target", ".cargo"]
+# run = "cd coreutil-source && cargo fmt && ./build.sh"
+run = "sh"
+hidden = ["target", ".cargo", ".config"]
 
 entrypoint = "src/main.rs"
 modules = ["rust-1.72:v1-20230911-f253fb1"]
