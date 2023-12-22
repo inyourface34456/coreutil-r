@@ -60,6 +60,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "arch"
+version = "0.1.0"
+
+[[package]]
+name = "b2sum"
+version = "0.1.0"
+
+[[package]]
+name = "base32"
+version = "0.1.0"
+
+[[package]]
+name = "base64"
+version = "0.1.0"
+
+[[package]]
+name = "basename"
+version = "0.1.0"
+
+[[package]]
 name = "cat1"
 version = "0.1.0"
 dependencies = [
@@ -67,6 +87,30 @@ dependencies = [
  "getch",
  "regex",
 ]
+
+[[package]]
+name = "chcon"
+version = "0.1.0"
+
+[[package]]
+name = "chgrp"
+version = "0.1.0"
+
+[[package]]
+name = "chmod"
+version = "0.1.0"
+
+[[package]]
+name = "chown"
+version = "0.1.0"
+
+[[package]]
+name = "chroot"
+version = "0.1.0"
+
+[[package]]
+name = "cksum"
+version = "0.1.0"
 
 [[package]]
 name = "clap"
@@ -115,6 +159,82 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "acbf1af155f9b9ef647e42cdc158db4b64a1b61f743629225fde6f3e0be2a7c7"
 
 [[package]]
+name = "comm"
+version = "0.1.0"
+
+[[package]]
+name = "cp"
+version = "0.1.0"
+
+[[package]]
+name = "csplit"
+version = "0.1.0"
+
+[[package]]
+name = "cut"
+version = "0.1.0"
+
+[[package]]
+name = "date"
+version = "0.1.0"
+
+[[package]]
+name = "dd"
+version = "0.1.0"
+
+[[package]]
+name = "df"
+version = "0.1.0"
+
+[[package]]
+name = "dir"
+version = "0.1.0"
+
+[[package]]
+name = "dircolors"
+version = "0.1.0"
+
+[[package]]
+name = "dirname"
+version = "0.1.0"
+
+[[package]]
+name = "du"
+version = "0.1.0"
+
+[[package]]
+name = "echo"
+version = "0.1.0"
+
+[[package]]
+name = "env"
+version = "0.1.0"
+
+[[package]]
+name = "expand"
+version = "0.1.0"
+
+[[package]]
+name = "expr"
+version = "0.1.0"
+
+[[package]]
+name = "factor"
+version = "0.1.0"
+
+[[package]]
+name = "false"
+version = "0.1.0"
+
+[[package]]
+name = "fmt"
+version = "0.1.0"
+
+[[package]]
+name = "fold"
+version = "0.1.0"
+
+[[package]]
 name = "getch"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -125,10 +245,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "groups"
+version = "0.1.0"
+
+[[package]]
+name = "head"
+version = "0.1.0"
+
+[[package]]
 name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
+
+[[package]]
+name = "hostid"
+version = "0.1.0"
+
+[[package]]
+name = "id"
+version = "0.1.0"
+
+[[package]]
+name = "install"
+version = "0.1.0"
+
+[[package]]
+name = "join"
+version = "0.1.0"
 
 [[package]]
 name = "libc"
@@ -137,10 +281,98 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
 
 [[package]]
+name = "link"
+version = "0.1.0"
+
+[[package]]
+name = "ln"
+version = "0.1.0"
+
+[[package]]
+name = "logname"
+version = "0.1.0"
+
+[[package]]
+name = "ls"
+version = "0.1.0"
+
+[[package]]
+name = "md5sum"
+version = "0.1.0"
+
+[[package]]
 name = "memchr"
 version = "2.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f665ee40bc4a3c5590afb1e9677db74a508659dfd71e126420da8274909a0167"
+
+[[package]]
+name = "mkdir"
+version = "0.1.0"
+
+[[package]]
+name = "mkinfo"
+version = "0.1.0"
+
+[[package]]
+name = "mknod"
+version = "0.1.0"
+
+[[package]]
+name = "mktmp"
+version = "0.1.0"
+
+[[package]]
+name = "mv"
+version = "0.1.0"
+
+[[package]]
+name = "nice"
+version = "0.1.0"
+
+[[package]]
+name = "nl"
+version = "0.1.0"
+
+[[package]]
+name = "nohup"
+version = "0.1.0"
+
+[[package]]
+name = "nproc"
+version = "0.1.0"
+
+[[package]]
+name = "numfmt"
+version = "0.1.0"
+
+[[package]]
+name = "od"
+version = "0.1.0"
+
+[[package]]
+name = "paste"
+version = "0.1.0"
+
+[[package]]
+name = "pathchk"
+version = "0.1.0"
+
+[[package]]
+name = "pinky"
+version = "0.1.0"
+
+[[package]]
+name = "pr"
+version = "0.1.0"
+
+[[package]]
+name = "printenv"
+version = "0.1.0"
+
+[[package]]
+name = "printf"
+version = "0.1.0"
 
 [[package]]
 name = "proc-macro2"
@@ -152,6 +384,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ptx"
+version = "0.1.0"
+
+[[package]]
+name = "pwd"
+version = "0.1.0"
+
+[[package]]
 name = "quote"
 version = "1.0.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -159,6 +399,14 @@ checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "readlink"
+version = "0.1.0"
+
+[[package]]
+name = "realpath"
+version = "0.1.0"
 
 [[package]]
 name = "regex"
@@ -190,10 +438,82 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
 
 [[package]]
+name = "rm"
+version = "0.1.0"
+
+[[package]]
+name = "rmdir"
+version = "0.1.0"
+
+[[package]]
+name = "runcon"
+version = "0.1.0"
+
+[[package]]
+name = "seq"
+version = "0.1.0"
+
+[[package]]
+name = "sha1sum"
+version = "0.1.0"
+
+[[package]]
+name = "sha224sum"
+version = "0.1.0"
+
+[[package]]
+name = "sha256sum"
+version = "0.1.0"
+
+[[package]]
+name = "sha384sum"
+version = "0.1.0"
+
+[[package]]
+name = "sha512sum"
+version = "0.1.0"
+
+[[package]]
+name = "shred"
+version = "0.1.0"
+
+[[package]]
+name = "shuf"
+version = "0.1.0"
+
+[[package]]
+name = "sleep"
+version = "0.1.0"
+
+[[package]]
+name = "sort"
+version = "0.1.0"
+
+[[package]]
+name = "split"
+version = "0.1.0"
+
+[[package]]
+name = "stat"
+version = "0.1.0"
+
+[[package]]
+name = "stdbuf"
+version = "0.1.0"
+
+[[package]]
 name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+
+[[package]]
+name = "stty"
+version = "0.1.0"
+
+[[package]]
+name = "sum"
+version = "0.1.0"
 
 [[package]]
 name = "syn"
@@ -207,6 +527,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "sync"
+version = "0.1.0"
+
+[[package]]
+name = "tac"
+version = "0.1.0"
+
+[[package]]
+name = "tail"
+version = "0.1.0"
+
+[[package]]
+name = "tee"
+version = "0.1.0"
+
+[[package]]
 name = "termios"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -216,16 +552,88 @@ dependencies = [
 ]
 
 [[package]]
+name = "test"
+version = "0.1.0"
+
+[[package]]
+name = "timeout"
+version = "0.1.0"
+
+[[package]]
+name = "touch"
+version = "0.1.0"
+
+[[package]]
+name = "tr"
+version = "0.1.0"
+
+[[package]]
+name = "true"
+version = "0.1.0"
+
+[[package]]
+name = "truncate"
+version = "0.1.0"
+
+[[package]]
+name = "tsort"
+version = "0.1.0"
+
+[[package]]
+name = "tty"
+version = "0.1.0"
+
+[[package]]
+name = "uname"
+version = "0.1.0"
+
+[[package]]
+name = "unexpand"
+version = "0.1.0"
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
+name = "uniq"
+version = "0.1.0"
+
+[[package]]
+name = "unlink"
+version = "0.1.0"
+
+[[package]]
+name = "uptime"
+version = "0.1.0"
+
+[[package]]
+name = "users"
+version = "0.1.0"
+
+[[package]]
 name = "utf8parse"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "711b9620af191e0cdc7468a8d14e709c3dcdb115b36f838e601583af800a370a"
+
+[[package]]
+name = "vdir"
+version = "0.1.0"
+
+[[package]]
+name = "wc"
+version = "0.1.0"
+
+[[package]]
+name = "who"
+version = "0.1.0"
+
+[[package]]
+name = "whoami"
+version = "0.1.0"
 
 [[package]]
 name = "windows-sys"
@@ -292,3 +700,7 @@ name = "windows_x86_64_msvc"
 version = "0.52.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dff9641d1cd4be8d1a070daf9e3773c5f67e78b4d9d42263020c057706765c04"
+
+[[package]]
+name = "yes"
+version = "0.1.0"
