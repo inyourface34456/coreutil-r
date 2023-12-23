@@ -1,9 +1,8 @@
-4d061b394c093654005599bfb34ae4c2f3ca1c26  target/release/arch.d
+42fb197044866f0c4394efd1edeecc944700dc39  target/release/arch.d
 42fb197044866f0c4394efd1edeecc944700dc39  target/release/b2sum.d
 105f920be99a838b82f84a368f444337a8f94eb1  target/release/base32.d
 ce883d4fd9d399c594814bd07c4382dc052c4c56  target/release/base64.d
 326abc884d2a9c4535d2dc9ab419622cdf15996f  target/release/basename.d
-sha1sum: target/release/build: Is a directory (os error 21)
 0b7f2670fd888a3b981f59131ef08f9d1dd948bf  target/release/cat.d
 3cfa6410a35aa0ecf3418a7112dc69269a255093  target/release/chcon.d
 d4ab131665ca66f4366032c8a36f4d5aa54502ed  target/release/chgrp.d
@@ -17,7 +16,6 @@ d73c4ccc1a0dea08699b8ef9ce8cd6803f2a7a5b  target/release/csplit.d
 c515d3e109f3c591f1fde2e6077cb8cf8e3a8f66  target/release/cut.d
 24a3d32d278d455499195d1012fc55badb19f09e  target/release/date.d
 97ea6d6d35d5a4294d3cf37647eaa4e163fa5c1b  target/release/dd.d
-sha1sum: target/release/deps: Is a directory (os error 21)
 f565da4b2ae09cdc4b49a89fc9ae7efd0416ee97  target/release/df.d
 ad7a10bf37b9b29646a1350b09d1f2f07d480987  target/release/dircolors.d
 bf11b15ce092f552eb9e3bd598cba8867fe992ba  target/release/dir.d
@@ -25,7 +23,6 @@ c78024b81cc904ee390e56430c2571bc527fa04f  target/release/dirname.d
 690fed2ff43bd7a4f6edcaf622825444aec06908  target/release/du.d
 b3ac7881656d060817e6dfd0ef2c7a51778ff415  target/release/echo.d
 3ed359871274bcf2d225558222cc12ee54973ff6  target/release/env.d
-sha1sum: target/release/examples: Is a directory (os error 21)
 6d43fffcc9df05afa5714ba84ce848057c72bde7  target/release/expand.d
 9a5859ab4558614fd22a6161472040f39d02eb74  target/release/expr.d
 e8330389d9177f05a372e055d361ebdbe3e8e3ef  target/release/factor.d
@@ -36,7 +33,6 @@ e8330389d9177f05a372e055d361ebdbe3e8e3ef  target/release/factor.d
 59561b2d6ae5dc187705ad6adce81b720f5f6549  target/release/head.d
 fe3822cde9308778e06ceececb588e44e45b01c6  target/release/hostid.d
 0f60ce1936ee491524ef9a5bd229a8e48fda8c3e  target/release/id.d
-sha1sum: target/release/incremental: Is a directory (os error 21)
 6478b75195bd0359366ef926df29c41dd50e4dcf  target/release/install.d
 850c6ab467e6a6b15500e1a90f63d193576f016e  target/release/join.d
 e4250a932cc1aa61de5666063a5c7b95f46caef6  target/release/link.d
