@@ -2,3 +2,8 @@ yes
 true
 false
 cat
+sha1sum
+sha224sum
+sha256sum
+sha512sum
+sleep
