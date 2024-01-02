@@ -1,14 +1,13 @@
-use base32::{decode, encode, Alphabet};
+use base64ct::{Base64, Encoding};
 use clap::Parser;
 use common::*;
-use getch::Getch;
 use std::fs;
 use std::process::exit;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
 struct Cli {
-    name: String,
+    name: Option<String>,
 
     ///decode data
     #[arg(short = 'd', long = "decode", default_value_t = false)]
@@ -30,75 +29,98 @@ fn path_exists(path: &str) -> bool {
 fn main() {
     let cli = Cli::parse();
 
-    if !cli.decode {
-        if cli.name == "-" {
-            let contents = input().unwrap();
-            print!(
-                "{}",
-                encode(Alphabet::RFC4648 { padding: true }, contents.as_bytes())
-            );
-        } else {
-            if path_exists(&cli.name) {
-                let contents = match fs::read_to_string(&cli.name) {
-                    Ok(dat) => dat,
-                    Err(e) => {
-                        eprintln!("base32: {}: {}", &cli.name, e);
-                        "".to_string()
-                    }
-                };
-                let output = encode(Alphabet::RFC4648 { padding: true }, contents.as_bytes());
-                if cli.wrap != 0 {
-                    let output = output
-                        .chars()
-                        .enumerate()
-                        .flat_map(|(i, c)| {
-                            if i != 0 && i % cli.wrap == 0 {
-                                Some('\n')
-                            } else {
-                                None
-                            }
-                            .into_iter()
-                            .chain(std::iter::once(c))
-                        })
-                        .collect::<String>();
-                    println!("{}", output);
-                } else {
-                    print!("{}", output);
-                }
+    match cli.name {
+      Some(name) => {
+        if !cli.decode {
+            if name == "-" {
+                let contents = input().unwrap();
+                println!(
+                    "{}",
+                  Base64::encode_string(contents.as_bytes())
+                );
             } else {
-                eprintln!("base32: {}: file does not exist", &cli.name);
-            }
-        }
-    } else {
-        if cli.name == "-" {
-            let contents = input().unwrap();
-            let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
-                Some(thing) => thing,
-                None => {
-                    eprintln!("base32: invalid input");
-                    exit(1)
-                }
-            };
-            print!("{}", String::from_utf8(dat).unwrap());
-        } else {
-            if path_exists(&cli.name) {
-                let contents = match fs::read_to_string(&cli.name) {
-                    Ok(dat) => dat,
-                    Err(e) => {
-                        eprintln!("base32: {}: {}", &cli.name, e);
-                        "".to_string()
+                if path_exists(&name) {
+                    let contents = match fs::read_to_string(&name) {
+                        Ok(dat) => dat,
+                        Err(e) => {
+                            eprintln!("base64: {}: {}", &name, e);
+                            "".to_string()
+                        }
+                    };
+                    let output = Base64::encode_string(contents.as_bytes());
+                    if cli.wrap != 0 {
+                        let output = output
+                            .chars()
+                            .enumerate()
+                            .flat_map(|(i, c)| {
+                                if i != 0 && i % cli.wrap == 0 {
+                                    Some('\n')
+                                } else {
+                                    None
+                                }
+                                .into_iter()
+                                .chain(std::iter::once(c))
+                            })
+                            .collect::<String>();
+                        println!("{}", output);
+                    } else {
+                        print!("{}", output);
                     }
-                };
-                let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
-                    Some(thing) => thing,
-                    None => {
-                        eprintln!("base32: invalid input");
+                } else {
+                    eprintln!("base64: {}: file does not exist", &name);
+                }
+            }
+        } else {
+            if name == "-" {
+                let contents = input().unwrap();
+                let dat = match Base64::decode_vec(contents.as_ref()) {
+                    Ok(thing) => thing,
+                    Err(e) => {
+                        eprintln!("base64: {}", e);
                         exit(1)
                     }
                 };
-                let output = String::from_utf8(dat).unwrap();
-                print!("{}", output);
+                println!("{}", String::from_utf8(dat).unwrap());
+            } else {
+                if path_exists(&name) {
+                    let contents = match fs::read_to_string(&name) {
+                        Ok(dat) => dat,
+                        Err(e) => {
+                            eprintln!("base64: {}: {}", &name, e);
+                            "".to_string()
+                        }
+                    };
+                    let dat = match Base64::decode_vec(contents.as_ref()) {
+                        Ok(thing) => thing,
+                        Err(e) => {
+                            eprintln!("base64: {}", e);
+                            exit(1)
+                        }
+                    };
+                    let output = String::from_utf8(dat).unwrap();
+                    print!("{}", output);
+                }
             }
         }
+      }
+      None => {
+        if cli.decode {
+          let contents = input().unwrap();
+          let dat = match Base64::decode_vec(contents.as_ref()) {
+              Ok(thing) => thing,
+              Err(e) => {
+                  eprintln!("base64: {}", e);
+                  exit(1)
+              }
+          };
+          println!("{}", String::from_utf8(dat).unwrap());
+        } else {
+          let contents = input().unwrap();
+          println!(
+              "{}",
+            Base64::encode_string(contents.as_bytes())
+          );
+        }
+      }
     }
 }
