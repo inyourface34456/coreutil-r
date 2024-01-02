@@ -1,8 +1,12 @@
 [package]
-name = "base64"
+name = "base32_"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+base32 = "0.4.0"
+clap = { version = "4.4.11", features = ["derive"] }
+common = { version = "0.1.0", path = "../common" }
+getch = "0.3.1"

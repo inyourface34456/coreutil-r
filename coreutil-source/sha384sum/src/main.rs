@@ -110,101 +110,102 @@ fn output_hashes(cli: Cli) {
         };
 
         if cli.zero && !cli.status {
-          print!("{}{}{}\x00", HEXLOWER.encode(digest.as_ref()), seperator, &i);
-        } else if !cli.zero && !cli.status{
-          println!("{}{}{}", HEXLOWER.encode(digest.as_ref()), seperator, &i);
+            print!(
+                "{}{}{}\x00",
+                HEXLOWER.encode(digest.as_ref()),
+                seperator,
+                &i
+            );
+        } else if !cli.zero && !cli.status {
+            println!("{}{}{}", HEXLOWER.encode(digest.as_ref()), seperator, &i);
         } else if cli.status {
-          continue;
+            continue;
         }
-      }
+    }
 }
 
 fn get_hashes(data: &String) -> Vec<String> {
-  data
-  .split('\n')
-  .map(|line| {
-      let line: Vec<String> =
-          line.to_string().split(' ').map(|x| x.to_string()).collect();
-      if line[0].len() == 96 {
-          return line[0].to_string();
-      } else {
-          return "".to_string();
-      }
-  })
-  .collect()
+    data.split('\n')
+        .map(|line| {
+            let line: Vec<String> = line.to_string().split(' ').map(|x| x.to_string()).collect();
+            if line[0].len() == 96 {
+                return line[0].to_string();
+            } else {
+                return "".to_string();
+            }
+        })
+        .collect()
 }
 
 fn get_file_locs(data: &String) -> Vec<String> {
-  data
-  .split('\n')
-  .map(|line| {
-      if line.is_empty() {
-          return "".to_string();
-      }
+    data.split('\n')
+        .map(|line| {
+            if line.is_empty() {
+                return "".to_string();
+            }
 
-      let line: Vec<String> =
-          line.to_string().split(' ').map(|x| x.to_string()).collect();
+            let line: Vec<String> = line.to_string().split(' ').map(|x| x.to_string()).collect();
 
-      if line[0] == format!("{BIN_NAME}:").as_ref() {
-        return "".to_string();
-      } else if line[1].is_empty() {
-          return line[2].clone();
-      } else {
-          let loc = line[1].clone();
-          return loc.replace('*', "");
-      }
-  })
-  .collect()
+            if line[0] == format!("{BIN_NAME}:").as_ref() {
+                return "".to_string();
+            } else if line[1].is_empty() {
+                return line[2].clone();
+            } else {
+                let loc = line[1].clone();
+                return loc.replace('*', "");
+            }
+        })
+        .collect()
 }
 
 fn check_hashes(cli: Cli) {
-  let mut failed_count = 0;
-  let mut sums_to_check = File::open(&cli.check)
-      .expect(format!("{BIN_NAME}: {}: could not open file", &cli.check).as_ref());
-  let mut data = String::new();
-  let _ = sums_to_check
-      .read_to_string(&mut data)
-      .expect(format!("{BIN_NAME}: {}: could not read file", &cli.check).as_ref());
-  let hashes: Vec<String> = get_hashes(&data);
+    let mut failed_count = 0;
+    let mut sums_to_check = File::open(&cli.check)
+        .expect(format!("{BIN_NAME}: {}: could not open file", &cli.check).as_ref());
+    let mut data = String::new();
+    let _ = sums_to_check
+        .read_to_string(&mut data)
+        .expect(format!("{BIN_NAME}: {}: could not read file", &cli.check).as_ref());
+    let hashes: Vec<String> = get_hashes(&data);
 
-  let file_locs: Vec<String> = get_file_locs(&data);
+    let file_locs: Vec<String> = get_file_locs(&data);
 
-  for i in 0..hashes.len()-1 {
-    if &hashes[i] == &file_locs[i] {
-      continue;
-    } else {
-      let file = File::open(&file_locs[i]).expect("could not open file");
-      let digest = match sha1_digest(file) {
-          Ok(dat) => dat,
-          Err(e) => {
-              if cli.strict {
-                  println!("{BIN_NAME}: {}: {}", &i, e.to_string());
-                  exit(1)
-              } else {
-                  println!("{BIN_NAME}: {}: {}", &i, e.to_string());
-                  continue;
-              }
-          }
-      };
-      if &HEXLOWER.encode(digest.as_ref()) == &hashes[i] {
-        println!("{}: OK", &file_locs[i]);
-      } else {
-        if !cli.ignore_missing {
-          failed_count += 1;
-          println!("{}: FAILED", &file_locs[i]);
+    for i in 0..hashes.len() - 1 {
+        if &hashes[i] == &file_locs[i] {
+            continue;
         } else {
-          continue;
+            let file = File::open(&file_locs[i]).expect("could not open file");
+            let digest = match sha1_digest(file) {
+                Ok(dat) => dat,
+                Err(e) => {
+                    if cli.strict {
+                        println!("{BIN_NAME}: {}: {}", &i, e.to_string());
+                        exit(1)
+                    } else {
+                        println!("{BIN_NAME}: {}: {}", &i, e.to_string());
+                        continue;
+                    }
+                }
+            };
+            if &HEXLOWER.encode(digest.as_ref()) == &hashes[i] {
+                println!("{}: OK", &file_locs[i]);
+            } else {
+                if !cli.ignore_missing {
+                    failed_count += 1;
+                    println!("{}: FAILED", &file_locs[i]);
+                } else {
+                    continue;
+                }
+            }
         }
-      }
     }
-  }
-  if failed_count > 0 && !cli.ignore_missing && !cli.status {
-  println!("Warning: {} file(s) have failed", failed_count);
-  } else if cli.status && failed_count > 0 {
-  exit(1)
-  } else if cli.status && failed_count == 0 {
-  exit(0)
-  }
+    if failed_count > 0 && !cli.ignore_missing && !cli.status {
+        println!("Warning: {} file(s) have failed", failed_count);
+    } else if cli.status && failed_count > 0 {
+        exit(1)
+    } else if cli.status && failed_count == 0 {
+        exit(0)
+    }
 }
 
 fn main() {
