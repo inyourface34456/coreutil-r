@@ -205,3 +205,4 @@ fn main() {
         check_hashes(cli)
     }
 }
+use common::*;

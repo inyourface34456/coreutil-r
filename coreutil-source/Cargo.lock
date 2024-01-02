@@ -62,10 +62,16 @@ dependencies = [
 [[package]]
 name = "arch"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "b2sum"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "base32"
@@ -86,16 +92,23 @@ dependencies = [
 [[package]]
 name = "base64_"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "basename"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "cat"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "getch",
  "regex",
 ]
@@ -118,26 +131,44 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "chcon"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "chgrp"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "chmod"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "chown"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "chroot"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "cksum"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "clap"
@@ -188,22 +219,37 @@ checksum = "acbf1af155f9b9ef647e42cdc158db4b64a1b61f743629225fde6f3e0be2a7c7"
 [[package]]
 name = "comm"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "common"
 version = "0.1.0"
+dependencies = [
+ "getch",
+]
 
 [[package]]
 name = "cp"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "csplit"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "cut"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "data-encoding"
@@ -214,62 +260,107 @@ checksum = "7e962a19be5cfc3f3bf6dd8f61eb50107f356ad6270fbb3ed41476571db78be5"
 [[package]]
 name = "date"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "dd"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "df"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "dir"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "dircolors"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "dirname"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "du"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "echo"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "env"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "expand"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "expr"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "factor"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "false"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "fmt"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "fold"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "getch"
@@ -295,10 +386,16 @@ dependencies = [
 [[package]]
 name = "groups"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "head"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "heck"
@@ -309,18 +406,30 @@ checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
 [[package]]
 name = "hostid"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "id"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "install"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "join"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "libc"
@@ -331,22 +440,37 @@ checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
 [[package]]
 name = "link"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "ln"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "logname"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "ls"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "md5sum"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "memchr"
@@ -357,70 +481,121 @@ checksum = "f665ee40bc4a3c5590afb1e9677db74a508659dfd71e126420da8274909a0167"
 [[package]]
 name = "mkdir"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "mkinfo"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "mknod"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "mktmp"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "mv"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "nice"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "nl"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "nohup"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "nproc"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "numfmt"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "od"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "paste"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "pathchk"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "pinky"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "pr"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "printenv"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "printf"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "proc-macro2"
@@ -434,10 +609,16 @@ dependencies = [
 [[package]]
 name = "ptx"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "pwd"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "quote"
@@ -451,10 +632,16 @@ dependencies = [
 [[package]]
 name = "readlink"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "realpath"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "regex"
@@ -502,10 +689,16 @@ dependencies = [
 [[package]]
 name = "rm"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "rmdir"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "rs_hasher_ctx"
@@ -558,16 +751,23 @@ dependencies = [
 [[package]]
 name = "runcon"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "seq"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "sha1sum"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "data-encoding",
  "ring",
 ]
@@ -577,6 +777,7 @@ name = "sha224sum"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "data-encoding",
  "rs_sha224",
 ]
@@ -586,6 +787,7 @@ name = "sha256sum"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "data-encoding",
  "ring",
 ]
@@ -595,6 +797,7 @@ name = "sha384sum"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "data-encoding",
  "ring",
 ]
@@ -604,6 +807,7 @@ name = "sha512sum"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
  "data-encoding",
  "ring",
 ]
@@ -611,21 +815,31 @@ dependencies = [
 [[package]]
 name = "shred"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "shuf"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "sleep"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
 ]
 
 [[package]]
 name = "sort"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "spin"
@@ -636,14 +850,23 @@ checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 [[package]]
 name = "split"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "stat"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "stdbuf"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "strsim"
@@ -654,10 +877,16 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 [[package]]
 name = "stty"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "sum"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "syn"
@@ -673,18 +902,30 @@ dependencies = [
 [[package]]
 name = "sync"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tac"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tail"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tee"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "termios"
@@ -698,42 +939,72 @@ dependencies = [
 [[package]]
 name = "test"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "timeout"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "touch"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tr"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "true"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "truncate"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tsort"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "tty"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "uname"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "unexpand"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "unicode-ident"
@@ -744,10 +1015,16 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 [[package]]
 name = "uniq"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "unlink"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "untrusted"
@@ -758,10 +1035,16 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 [[package]]
 name = "uptime"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "users"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "utf8parse"
@@ -772,6 +1055,9 @@ checksum = "711b9620af191e0cdc7468a8d14e709c3dcdb115b36f838e601583af800a370a"
 [[package]]
 name = "vdir"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "wasi"
@@ -782,14 +1068,23 @@ checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
 [[package]]
 name = "wc"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "who"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "whoami"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "windows-sys"
@@ -928,4 +1223,5 @@ name = "yes"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "common",
 ]

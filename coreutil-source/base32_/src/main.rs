@@ -1,9 +1,9 @@
 use base32::{decode, encode, Alphabet};
 use clap::Parser;
+use common::*;
 use getch::Getch;
 use std::fs;
 use std::process::exit;
-use common::input;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
@@ -22,8 +22,6 @@ struct Cli {
     #[arg(short = 'w', long = "wrap", default_value_t = 76)]
     wrap: usize,
 }
-
-
 
 fn path_exists(path: &str) -> bool {
     fs::metadata(path).is_ok()
@@ -72,38 +70,35 @@ fn main() {
             }
         }
     } else {
-      if cli.name == "-" {
-          let contents = input().unwrap();
-          let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
-            Some(thing) => thing,
-            None => {
-              eprintln!("base32: invalid input");
-              exit(1)
-            },
-          };
-          print!(
-              "{}",
-              String::from_utf8(dat).unwrap()
-          );
-      } else {
-        if path_exists(&cli.name) {
-          let contents = match fs::read_to_string(&cli.name) {
-              Ok(dat) => dat,
-              Err(e) => {
-                  eprintln!("base32: {}: {}", &cli.name, e);
-                  "".to_string()
-              }
-          };
-          let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
-            Some(thing) => thing,
-            None => {
-                eprintln!("base32: invalid input");
-                exit(1)
-              },
-          };
-          let output = String::from_utf8(dat).unwrap();
-          print!("{}", output);
-      }
-    }
+        if cli.name == "-" {
+            let contents = input().unwrap();
+            let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
+                Some(thing) => thing,
+                None => {
+                    eprintln!("base32: invalid input");
+                    exit(1)
+                }
+            };
+            print!("{}", String::from_utf8(dat).unwrap());
+        } else {
+            if path_exists(&cli.name) {
+                let contents = match fs::read_to_string(&cli.name) {
+                    Ok(dat) => dat,
+                    Err(e) => {
+                        eprintln!("base32: {}: {}", &cli.name, e);
+                        "".to_string()
+                    }
+                };
+                let dat = match decode(Alphabet::RFC4648 { padding: true }, contents.as_ref()) {
+                    Some(thing) => thing,
+                    None => {
+                        eprintln!("base32: invalid input");
+                        exit(1)
+                    }
+                };
+                let output = String::from_utf8(dat).unwrap();
+                print!("{}", output);
+            }
+        }
     }
 }

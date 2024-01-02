@@ -1,4 +1,5 @@
 use clap::Parser;
+use common::*;
 use getch::Getch;
 use regex::Regex;
 use std::fs;
@@ -47,29 +48,6 @@ struct Cli {
 
 fn path_exists(path: &str) -> bool {
     fs::metadata(path).is_ok()
-}
-
-fn input() -> Option<String> {
-    let mut buffer = "".to_string();
-    let input = Getch::new();
-    let mut letter;
-    loop {
-        letter = input.getch().unwrap() as char;
-        if letter == '\n' {
-            break;
-        } else if letter == '\x04' {
-            break;
-        } else {
-            buffer.insert(buffer.len(), letter);
-        }
-    }
-    if letter == '\n' {
-        return Some(buffer);
-    } else if letter == '\x04' {
-        return None;
-    } else {
-        panic!();
-    }
 }
 
 fn forever_loop() {

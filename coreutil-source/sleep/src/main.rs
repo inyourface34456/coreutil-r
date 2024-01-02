@@ -28,3 +28,4 @@ fn main() {
         sleep(Duration::from_secs_f64(duration))
     }
 }
+use common::*;

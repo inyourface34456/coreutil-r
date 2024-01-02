@@ -105,8 +105,9 @@ members = [
   "users",
   "who",
   "whoami",
-  "yes"
-, "common"]
+  "yes",
+  "common"
+]
 
 [profile.release]
 panic = "abort"

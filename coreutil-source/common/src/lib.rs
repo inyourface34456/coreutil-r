@@ -1,3 +1,5 @@
+use getch::Getch;
+
 pub fn input() -> Option<String> {
     let mut buffer = "".to_string();
     let input = Getch::new();
@@ -16,15 +18,5 @@ pub fn input() -> Option<String> {
         return None;
     } else {
         panic!();
-    }
-}
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
     }
 }
