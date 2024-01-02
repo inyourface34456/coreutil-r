@@ -10,4 +10,4 @@ edition = "2021"
 clap = { version = "4.4.11", features = ["derive"] }
 getch = "0.3.1"
 regex = "1.10.2"
-common = { version = 0.1.0, path = ../common }
+common = { version = "0.1.0", path = "../common" }

@@ -9,4 +9,4 @@ edition = "2021"
 clap = { version = "4.4.11", features = ["derive"] }
 data-encoding = "2.5.0"
 ring = "0.17.7"
-common = { version = 0.1.0, path = ../common }
+common = { version = "0.1.0", path = "../common" }
