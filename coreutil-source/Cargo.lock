@@ -70,6 +70,7 @@ dependencies = [
 name = "b2sum"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -108,6 +109,7 @@ checksum = "8c3c1a368f70d6cf7302d78f8f7093da241fb8e8807c05cc9e51a125895a6d5b"
 name = "basename"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -140,6 +142,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 name = "chcon"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -147,6 +150,7 @@ dependencies = [
 name = "chgrp"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -154,6 +158,7 @@ dependencies = [
 name = "chmod"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -161,6 +166,7 @@ dependencies = [
 name = "chown"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -168,6 +174,7 @@ dependencies = [
 name = "chroot"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -175,14 +182,15 @@ dependencies = [
 name = "cksum"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
 [[package]]
 name = "clap"
-version = "4.4.11"
+version = "4.4.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bfaff671f6b22ca62406885ece523383b9b64022e341e53e009a62ebc47a45f2"
+checksum = "dcfab8ba68f3668e89f6ff60f5b205cea56aa7b769451a59f34b8682f51c056d"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -190,9 +198,9 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.4.11"
+version = "4.4.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a216b506622bb1d316cd51328dce24e07bdff4a6128a47c7e7fad11878d5adbb"
+checksum = "fb7fb5e4e979aec3be7791562fcba452f94ad85e954da024396433e0e25a79e9"
 dependencies = [
  "anstream",
  "anstyle",
@@ -228,6 +236,7 @@ checksum = "acbf1af155f9b9ef647e42cdc158db4b64a1b61f743629225fde6f3e0be2a7c7"
 name = "comm"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -242,6 +251,7 @@ dependencies = [
 name = "cp"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -249,6 +259,7 @@ dependencies = [
 name = "csplit"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -256,6 +267,7 @@ dependencies = [
 name = "cut"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -269,6 +281,7 @@ checksum = "7e962a19be5cfc3f3bf6dd8f61eb50107f356ad6270fbb3ed41476571db78be5"
 name = "date"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -276,6 +289,7 @@ dependencies = [
 name = "dd"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -283,6 +297,7 @@ dependencies = [
 name = "df"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -290,6 +305,7 @@ dependencies = [
 name = "dir"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -297,6 +313,7 @@ dependencies = [
 name = "dircolors"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -304,6 +321,7 @@ dependencies = [
 name = "dirname"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -311,6 +329,7 @@ dependencies = [
 name = "du"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -326,6 +345,7 @@ dependencies = [
 name = "env"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -333,6 +353,7 @@ dependencies = [
 name = "expand"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -340,6 +361,7 @@ dependencies = [
 name = "expr"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -347,6 +369,7 @@ dependencies = [
 name = "factor"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -361,6 +384,7 @@ dependencies = [
 name = "fmt"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -368,6 +392,7 @@ dependencies = [
 name = "fold"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -396,6 +421,7 @@ dependencies = [
 name = "groups"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -403,6 +429,7 @@ dependencies = [
 name = "head"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -416,6 +443,7 @@ checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
 name = "hostid"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -423,6 +451,7 @@ dependencies = [
 name = "id"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -430,6 +459,7 @@ dependencies = [
 name = "install"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -437,6 +467,7 @@ dependencies = [
 name = "join"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -450,6 +481,7 @@ checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
 name = "link"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -457,6 +489,7 @@ dependencies = [
 name = "ln"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -464,6 +497,7 @@ dependencies = [
 name = "logname"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -471,6 +505,7 @@ dependencies = [
 name = "ls"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -478,6 +513,7 @@ dependencies = [
 name = "md5sum"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -491,6 +527,7 @@ checksum = "f665ee40bc4a3c5590afb1e9677db74a508659dfd71e126420da8274909a0167"
 name = "mkdir"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -498,6 +535,7 @@ dependencies = [
 name = "mkinfo"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -505,6 +543,7 @@ dependencies = [
 name = "mknod"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -512,6 +551,7 @@ dependencies = [
 name = "mktmp"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -519,6 +559,7 @@ dependencies = [
 name = "mv"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -526,6 +567,7 @@ dependencies = [
 name = "nice"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -533,6 +575,7 @@ dependencies = [
 name = "nl"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -540,6 +583,7 @@ dependencies = [
 name = "nohup"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -547,6 +591,7 @@ dependencies = [
 name = "nproc"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -554,6 +599,7 @@ dependencies = [
 name = "numfmt"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -561,6 +607,7 @@ dependencies = [
 name = "od"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -568,6 +615,7 @@ dependencies = [
 name = "paste"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -575,6 +623,7 @@ dependencies = [
 name = "pathchk"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -582,6 +631,7 @@ dependencies = [
 name = "pinky"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -589,6 +639,7 @@ dependencies = [
 name = "pr"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -596,6 +647,7 @@ dependencies = [
 name = "printenv"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -603,6 +655,7 @@ dependencies = [
 name = "printf"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -619,6 +672,7 @@ dependencies = [
 name = "ptx"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -626,6 +680,7 @@ dependencies = [
 name = "pwd"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -642,6 +697,7 @@ dependencies = [
 name = "readlink"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -649,6 +705,7 @@ dependencies = [
 name = "realpath"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -699,6 +756,7 @@ dependencies = [
 name = "rm"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -706,6 +764,7 @@ dependencies = [
 name = "rmdir"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -761,6 +820,7 @@ dependencies = [
 name = "runcon"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -768,6 +828,7 @@ dependencies = [
 name = "seq"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -825,6 +886,7 @@ dependencies = [
 name = "shred"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -832,6 +894,7 @@ dependencies = [
 name = "shuf"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -847,6 +910,7 @@ dependencies = [
 name = "sort"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -860,6 +924,7 @@ checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 name = "split"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -867,6 +932,7 @@ dependencies = [
 name = "stat"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -874,6 +940,7 @@ dependencies = [
 name = "stdbuf"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -887,6 +954,7 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 name = "stty"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -894,6 +962,7 @@ dependencies = [
 name = "sum"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -912,6 +981,7 @@ dependencies = [
 name = "sync"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -919,6 +989,7 @@ dependencies = [
 name = "tac"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -926,6 +997,7 @@ dependencies = [
 name = "tail"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -933,6 +1005,7 @@ dependencies = [
 name = "tee"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -949,6 +1022,7 @@ dependencies = [
 name = "test"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -956,6 +1030,7 @@ dependencies = [
 name = "timeout"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -963,6 +1038,7 @@ dependencies = [
 name = "touch"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -970,6 +1046,7 @@ dependencies = [
 name = "tr"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -984,6 +1061,7 @@ dependencies = [
 name = "truncate"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -991,6 +1069,7 @@ dependencies = [
 name = "tsort"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -998,6 +1077,7 @@ dependencies = [
 name = "tty"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1005,6 +1085,7 @@ dependencies = [
 name = "uname"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1012,6 +1093,7 @@ dependencies = [
 name = "unexpand"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1025,6 +1107,7 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 name = "uniq"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1032,6 +1115,7 @@ dependencies = [
 name = "unlink"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1045,6 +1129,7 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 name = "uptime"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1052,6 +1137,7 @@ dependencies = [
 name = "users"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1065,6 +1151,7 @@ checksum = "711b9620af191e0cdc7468a8d14e709c3dcdb115b36f838e601583af800a370a"
 name = "vdir"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1078,6 +1165,7 @@ checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
 name = "wc"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1085,6 +1173,7 @@ dependencies = [
 name = "who"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 
@@ -1092,6 +1181,7 @@ dependencies = [
 name = "whoami"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
 ]
 

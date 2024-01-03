@@ -1,0 +1,7 @@
+# thease are common bits of code that cannot be put in a libary, just needs to be copy and pasted
+
+#[derive(Parser)]
+#[command(author, version, about, long_about)]
+struct Cli {
+    name: Option<String>
+}
