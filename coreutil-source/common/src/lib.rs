@@ -20,3 +20,10 @@ pub fn input() -> Option<String> {
         panic!();
     }
 }
+
+pub fn char_to_str(subject: char) -> String {
+  let mut temp: [u8; 4] = [0; 4];
+  subject.encode_utf8(&mut temp);
+  let temp2: &str = std::str::from_utf8(&temp).unwrap();
+  temp2.to_owned()
+}

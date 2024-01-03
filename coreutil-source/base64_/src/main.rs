@@ -30,48 +30,78 @@ fn main() {
     let cli = Cli::parse();
 
     match cli.name {
-      Some(name) => {
-        if !cli.decode {
-            if name == "-" {
-                let contents = input().unwrap();
-                println!(
-                    "{}",
-                  Base64::encode_string(contents.as_bytes())
-                );
+        Some(name) => {
+            if !cli.decode {
+                if name == "-" {
+                    let contents = input().unwrap();
+                    println!("{}", Base64::encode_string(contents.as_bytes()));
+                } else {
+                    if path_exists(&name) {
+                        let contents = match fs::read_to_string(&name) {
+                            Ok(dat) => dat,
+                            Err(e) => {
+                                eprintln!("base64: {}: {}", &name, e);
+                                "".to_string()
+                            }
+                        };
+                        let output = Base64::encode_string(contents.as_bytes());
+                        if cli.wrap != 0 {
+                            let output = output
+                                .chars()
+                                .enumerate()
+                                .flat_map(|(i, c)| {
+                                    if i != 0 && i % cli.wrap == 0 {
+                                        Some('\n')
+                                    } else {
+                                        None
+                                    }
+                                    .into_iter()
+                                    .chain(std::iter::once(c))
+                                })
+                                .collect::<String>();
+                            println!("{}", output);
+                        } else {
+                            print!("{}", output);
+                        }
+                    } else {
+                        eprintln!("base64: {}: file does not exist", &name);
+                    }
+                }
             } else {
-                if path_exists(&name) {
-                    let contents = match fs::read_to_string(&name) {
-                        Ok(dat) => dat,
+                if name == "-" {
+                    let contents = input().unwrap();
+                    let dat = match Base64::decode_vec(contents.as_ref()) {
+                        Ok(thing) => thing,
                         Err(e) => {
-                            eprintln!("base64: {}: {}", &name, e);
-                            "".to_string()
+                            eprintln!("base64: {}", e);
+                            exit(1)
                         }
                     };
-                    let output = Base64::encode_string(contents.as_bytes());
-                    if cli.wrap != 0 {
-                        let output = output
-                            .chars()
-                            .enumerate()
-                            .flat_map(|(i, c)| {
-                                if i != 0 && i % cli.wrap == 0 {
-                                    Some('\n')
-                                } else {
-                                    None
-                                }
-                                .into_iter()
-                                .chain(std::iter::once(c))
-                            })
-                            .collect::<String>();
-                        println!("{}", output);
-                    } else {
+                    println!("{}", String::from_utf8(dat).unwrap());
+                } else {
+                    if path_exists(&name) {
+                        let contents = match fs::read_to_string(&name) {
+                            Ok(dat) => dat,
+                            Err(e) => {
+                                eprintln!("base64: {}: {}", &name, e);
+                                "".to_string()
+                            }
+                        };
+                        let dat = match Base64::decode_vec(contents.as_ref()) {
+                            Ok(thing) => thing,
+                            Err(e) => {
+                                eprintln!("base64: {}", e);
+                                exit(1)
+                            }
+                        };
+                        let output = String::from_utf8(dat).unwrap();
                         print!("{}", output);
                     }
-                } else {
-                    eprintln!("base64: {}: file does not exist", &name);
                 }
             }
-        } else {
-            if name == "-" {
+        }
+        None => {
+            if cli.decode {
                 let contents = input().unwrap();
                 let dat = match Base64::decode_vec(contents.as_ref()) {
                     Ok(thing) => thing,
@@ -82,45 +112,9 @@ fn main() {
                 };
                 println!("{}", String::from_utf8(dat).unwrap());
             } else {
-                if path_exists(&name) {
-                    let contents = match fs::read_to_string(&name) {
-                        Ok(dat) => dat,
-                        Err(e) => {
-                            eprintln!("base64: {}: {}", &name, e);
-                            "".to_string()
-                        }
-                    };
-                    let dat = match Base64::decode_vec(contents.as_ref()) {
-                        Ok(thing) => thing,
-                        Err(e) => {
-                            eprintln!("base64: {}", e);
-                            exit(1)
-                        }
-                    };
-                    let output = String::from_utf8(dat).unwrap();
-                    print!("{}", output);
-                }
+                let contents = input().unwrap();
+                println!("{}", Base64::encode_string(contents.as_bytes()));
             }
         }
-      }
-      None => {
-        if cli.decode {
-          let contents = input().unwrap();
-          let dat = match Base64::decode_vec(contents.as_ref()) {
-              Ok(thing) => thing,
-              Err(e) => {
-                  eprintln!("base64: {}", e);
-                  exit(1)
-              }
-          };
-          println!("{}", String::from_utf8(dat).unwrap());
-        } else {
-          let contents = input().unwrap();
-          println!(
-              "{}",
-            Base64::encode_string(contents.as_bytes())
-          );
-        }
-      }
     }
 }
