@@ -3,5 +3,5 @@
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
 struct Cli {
-    name: Option<String>
+    name: String
 }

@@ -1,15 +1,10 @@
 use clap::Parser;
 use std::thread::sleep;
 use std::time::Duration;
-
-#[derive(Parser)]
-#[command(author, version, about, long_about)]
-struct Cli {
-    name: String,
-}
+use common::*;
 
 fn main() {
-    let cli = Cli::parse();
+    let cli = CliOnlyOneArg::parse();
 
     if cli.name.ends_with('s') {
         let duration = cli.name.replace('s', "").parse().expect("not a number");
@@ -28,4 +23,3 @@ fn main() {
         sleep(Duration::from_secs_f64(duration))
     }
 }
-use common::*;

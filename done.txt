@@ -7,5 +7,7 @@ sha224sum
 sha256sum
 sha512sum
 sleep
-
- 
+base32
+base64
+arch
+link

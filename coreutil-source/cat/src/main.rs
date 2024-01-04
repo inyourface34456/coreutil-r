@@ -1,8 +1,8 @@
 use clap::Parser;
 use common::*;
-use getch::Getch;
 use regex::Regex;
 use std::fs;
+use common::*;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
@@ -44,10 +44,6 @@ struct Cli {
     /// use ^ and M- notation, except for LFD and TAB
     #[arg(short = 'v', long = "show-nonprinting", default_value_t = false)]
     show_nonprinting: bool,
-}
-
-fn path_exists(path: &str) -> bool {
-    fs::metadata(path).is_ok()
 }
 
 fn forever_loop() {
