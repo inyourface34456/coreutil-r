@@ -4,4 +4,16 @@
 #[command(author, version, about, long_about)]
 struct Cli {
     name: String
+
+    ///discription
+    #[arg(short = 'e', default_value_t = default_value)]
+    name: type
 }
+
+
+info for the coreutils, also many other things
+brakets go back and fourth
+p and n go the last and next node
+g goes to a node by name
+main node is 'top'
+info coreutils 'info invocation'

@@ -107,7 +107,7 @@ members = [
   "whoami",
   "yes",
   "common"
-]
+, "basenc", "ginstall", "kill"]
 
 [profile.release]
 panic = "abort"
