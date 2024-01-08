@@ -1,6 +1,7 @@
 use getch::Getch;
 use clap::Parser;
 use std::fs;
+use std::process::exit as exit_std;
 
 pub fn input() -> Option<String> {
     let mut buffer = "".to_string();
@@ -23,6 +24,27 @@ pub fn input() -> Option<String> {
     }
 }
 
+pub fn input_bytes() -> Vec<u8> {
+    let mut buffer = Vec::new();
+    let input = Getch::new();
+    let mut letter;
+    loop {
+        letter = input.getch().unwrap() as char;
+        match letter {
+            '\x0a' => break,
+            _ => {
+              // println!("{}", letter as u8);
+              buffer.push(letter as u8);
+            },
+        }
+    }
+    if letter == '\x0a' {
+        return buffer;
+    } else {
+        panic!();
+    }
+}
+
 pub fn char_to_str(subject: char) -> String {
   let mut temp: [u8; 4] = [0; 4];
   subject.encode_utf8(&mut temp);
@@ -38,4 +60,13 @@ pub struct CliOnlyOneArg {
 
 pub fn path_exists(path: &str) -> bool {
     fs::metadata(path).is_ok()
+}
+
+pub fn safly_exit(msg: &str) -> ! {
+  eprintln!("{}", msg);
+  exit(1)
+}
+
+pub fn exit(code: i32) -> ! {
+  exit_std(code)
 }

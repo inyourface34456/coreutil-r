@@ -2,7 +2,7 @@
 run = "sh"
 hidden = ["target", ".cargo", ".config"]
 
-entrypoint = "src/main.rs"
+entrypoint = "coreutil-source"
 modules = ["rust-1.72:v1-20230911-f253fb1"]
 
 [nix]

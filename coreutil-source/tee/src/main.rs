@@ -1,7 +1,6 @@
 use common::*;
 use clap::Parser;
 use std::convert::From;
-use std::process::exit;
 
 #[derive(Clone)]
 enum Mode {
@@ -10,11 +9,6 @@ enum Mode {
   Exit,
   ExitNopipe,
   None
-}
-
-fn safly_exit(msg: &str) -> ! {
-  eprintln!("{}", msg);
-  exit(1)
 }
 
 impl From<String> for Mode {
@@ -55,11 +49,11 @@ struct Cli {
     ignore_interupts: bool,
 
     ///diagnose errors writing to nonpipes
-    #[arg(short = 'p', default_value_t = )]
-    nonpipe: bool,
+    #[arg(short = 'p', default_value_t = false)]
+    diagnose: bool,
 
     ///set behavior on write error.  See MODE below
-    #[arg(long = "output-error", default_value = Mode::None)]
+    #[arg(long = "output-error", default_value = Mode::Exit)]
     error_mode: Mode
 }
 
@@ -69,4 +63,17 @@ fn main() {
     if cli.ignore_interupts {
       todo!();
     }
+
+    let to_write = input_bytes();
+    println!("{:?}", to_write);
+
+    for i in cli.name {
+      if path_exists(i.as_str()) {
+        
+      } else {
+        safly_exit("tee: {i}: file does not exist");
+      }
+    }
+
+    
 }
