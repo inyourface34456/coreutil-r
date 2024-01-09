@@ -11,3 +11,5 @@ base32
 base64
 arch
 link
+tee
+seq

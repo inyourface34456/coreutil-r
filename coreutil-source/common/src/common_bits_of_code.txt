@@ -1,5 +1,7 @@
 # thease are common bits of code that cannot be put in a libary, just needs to be copy and pasted
 
+use clap::Parser;
+
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
 struct Cli {
