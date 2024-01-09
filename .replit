@@ -1,8 +1,9 @@
 # run = "cd coreutil-source && cargo fmt && ./build.sh"
 run = "sh"
+#run = "cat coreutil-source/test.txt | ./coreutil-source/target/debug/tee -i test.txt"
 hidden = ["target", ".cargo", ".config"]
 
-entrypoint = "coreutil-source"
+entrypoint = "src/main.rs"
 modules = ["rust-1.72:v1-20230911-f253fb1"]
 
 [nix]

@@ -31,7 +31,8 @@ pub fn input_bytes() -> Vec<u8> {
     loop {
         letter = input.getch().unwrap() as char;
         match letter {
-            '\x0a' => break,
+            '\x04' => break,
+            '\n' => break,
             _ => {
               // println!("{}", letter as u8);
               buffer.push(letter as u8);

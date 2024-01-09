@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.4.12", features = ["derive"] }
 common = { version = "0.1.0", path = "../common" }
+ctrlc = { version = "3.4.2", features = ["termination"] }

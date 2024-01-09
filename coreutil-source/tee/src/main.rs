@@ -1,6 +1,9 @@
 use common::*;
 use clap::Parser;
 use std::convert::From;
+use std::fs;
+use std::io::Write;
+use ctrlc::*;
 
 #[derive(Clone)]
 enum Mode {
@@ -61,17 +64,74 @@ fn main() {
     let cli = Cli::parse();
 
     if cli.ignore_interupts {
-      todo!();
+      match set_handler(|| {}) {
+        Ok(_) => {},
+        Err(e) => {
+          safly_exit(format!("failed to ignore interupts beacuse {}", e.to_string()).as_str());
+        }
+      }
     }
 
     let to_write = input_bytes();
-    println!("{:?}", to_write);
+    //println!("{:?}", to_write);
 
     for i in cli.name {
       if path_exists(i.as_str()) {
-        
+        if !cli.append {
+          let mut file = fs::OpenOptions::new().write(true).truncate(true).open(&i).unwrap();
+          match file.write_all(to_write.as_slice()) {
+            Ok(_) => {},
+            Err(e) => {
+              if cli.diagnose {
+                safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+              } else {
+                match cli.error_mode {
+                  Mode::Warn => {
+                    eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
+                  }
+                  Mode::WarnNopipe => {
+                    eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
+                  }
+                  Mode::Exit => {
+                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                  }
+                  Mode::ExitNopipe => {
+                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                  }
+                  Mode::None => panic!("things have gone truly wrong if you are seeing this")
+                }
+              }
+            }
+          }
+        } else {
+          let mut file = fs::File::options().append(true).open(&i).unwrap();
+          match writeln!(&mut file, "{}", String::from_utf8(to_write.clone()).unwrap()) {
+            Ok(_) => {},
+            Err(e) => {
+              if cli.diagnose {
+                safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+              } else {
+                match cli.error_mode {
+                  Mode::Warn => {
+                    eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
+                  }
+                  Mode::WarnNopipe => {
+                    eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
+                  }
+                  Mode::Exit => {
+                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                  }
+                  Mode::ExitNopipe => {
+                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                  }
+                  Mode::None => panic!("things have gone truly wrong if you are seeing this")
+                }
+              }
+            }
+          }
+        }
       } else {
-        safly_exit("tee: {i}: file does not exist");
+        safly_exit(format!("tee: {i}: file does not exist").as_str());
       }
     }
 
