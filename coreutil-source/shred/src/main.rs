@@ -2,6 +2,8 @@ use clap::Parser;
 use common::*;
 use std::fs::{self, File};
 use std::io::{Read, Write};
+use std::os::unix::fs::MetadataExt;
+
 
 #[derive(Clone)]
 enum RemoveMethod {
@@ -36,7 +38,7 @@ impl From<RemoveMethod> for clap::builder::OsStr {
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
 struct Cli {
-    name: String,
+    name: Option<String>,
 
     ///change permissions to allow writing if necessary
     #[arg(short = 'f', long = "force", default_value_t = false)]
@@ -84,15 +86,26 @@ fn get_rand_bytes(s: usize, rand_source: &String) -> Vec<u8> {
     buffer
 }
 
+fn to_nearest_blk_size(num: u64, blk_size: u64) -> usize {
+  ((num*-1)/mult)*blk_size*-1+blk_size).try_into().unwrap()
+}
+
 fn main() {
     let cli = Cli::parse();
+    let name = match cli.name {
+      Some(dat) => dat,
+      None => String::new()
+    };
     let file_size;
     let mut file;
+    let blk_size;
 
     if path_exists(&cli.name) {
-        file_size = fs::metadata(&cli.name).unwrap().len();
+        let meta = fs::metadata(&cli.name).unwrap();
+        file_size = meta.len();
+        blk_size = meta.blksize();
     } else {
-        if cli.name == "-" {
+        if cli.name == "-" || cli.name == "" {
             file_size = input().len();
         } else {
             safly_exit!("shred: {}: does not exist", &cli.name)
@@ -100,6 +113,10 @@ fn main() {
     }
 
     for _ in 0..cli.iters {
+      if cli.name == "-" || cli.name == "" {  
+          let data: String = get_rand_bytes(, &cli.random_source).into_iter().map(|x| x as char).collect();
+          print!("{}")
+      } else {
         file = fs::OpenOptions::new()
             .write(true)
             .truncate(true)
@@ -107,12 +124,13 @@ fn main() {
             .unwrap();
 
         file.write_all(
-            get_rand_bytes(file_size.try_into().unwrap(), &cli.random_source).as_slice(),
+            get_rand_bytes(to_nearest_blk_size(file_size, blk_size), &cli.random_source).as_slice(),
         )
         .expect("but why");
+      }
     }
 
-    if cli.zero {
+    if cli.zero && !(cli.name == "-" || cli.name == "") {
         file = fs::OpenOptions::new()
             .write(true)
             .truncate(true)
