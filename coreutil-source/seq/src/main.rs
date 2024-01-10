@@ -14,9 +14,9 @@ impl From<String> for Sequence {
     let value: Vec<String> = value.split(' ').map(|x| x.to_string()).collect();
 
     if value.len() < 1 {
-      safly_exit("seq: missing operand")
+      safly_exit!("seq: missing operand")
     } else if value.len() > 3 {
-      safly_exit("seq: must have at most 3 arguments")
+      safly_exit!("seq: must have at most 3 arguments")
     } else {
       let mut nums: Vec<i128> = Vec::new();
 
@@ -24,7 +24,7 @@ impl From<String> for Sequence {
         let num = match i.parse() {
           Ok(dat) => dat,
           Err(_) => {
-            safly_exit(format!("seq: arguments must be numbers").as_str())
+            safly_exit!("seq: arguments must be numbers")
           }
         };
         nums.push(num);

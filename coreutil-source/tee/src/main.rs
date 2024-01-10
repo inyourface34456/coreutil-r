@@ -33,7 +33,7 @@ impl From<Mode> for clap::builder::OsStr {
         Mode::WarnNopipe => clap::builder::OsStr::from("warn-nopipe"),
         Mode::Exit => clap::builder::OsStr::from("exit"),
         Mode::ExitNopipe => clap::builder::OsStr::from("exit-nopipe"),
-        Mode::None => safly_exit("tee: invalid argument for '--output-error'\nValid arguments are:\n  - ‘warn’\n  - ‘warn-nopipe’\n  - ‘exit’\n  - ‘exit-nopipe’")
+        Mode::None => safly_exit!("tee: invalid argument for '--output-error'\nValid arguments are:\n  - ‘warn’\n  - ‘warn-nopipe’\n  - ‘exit’\n  - ‘exit-nopipe’")
     };
   }
 }
@@ -67,7 +67,7 @@ fn main() {
       match set_handler(|| {}) {
         Ok(_) => {},
         Err(e) => {
-          safly_exit(format!("failed to ignore interupts beacuse {}", e.to_string()).as_str());
+          safly_exit!("failed to ignore interupts beacuse {}", e.to_string()));
         }
       }
     }
@@ -83,7 +83,7 @@ fn main() {
             Ok(_) => {},
             Err(e) => {
               if cli.diagnose {
-                safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str();
               } else {
                 match cli.error_mode {
                   Mode::Warn => {
@@ -93,10 +93,10 @@ fn main() {
                     eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::Exit => {
-                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                    safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::ExitNopipe => {
-                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                    safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::None => panic!("things have gone truly wrong if you are seeing this")
                 }
@@ -109,7 +109,7 @@ fn main() {
             Ok(_) => {},
             Err(e) => {
               if cli.diagnose {
-                safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string());
               } else {
                 match cli.error_mode {
                   Mode::Warn => {
@@ -119,10 +119,10 @@ fn main() {
                     eprintln!("WARN: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::Exit => {
-                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                    safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::ExitNopipe => {
-                    safly_exit(format!("ERROR: {i} failed to write beacuse of {}", e.to_string()).as_str());
+                    safly_exit!("ERROR: {i} failed to write beacuse of {}", e.to_string());
                   }
                   Mode::None => panic!("things have gone truly wrong if you are seeing this")
                 }
@@ -131,7 +131,7 @@ fn main() {
           }
         }
       } else {
-        safly_exit(format!("tee: {i}: file does not exist").as_str());
+        safly_exit!("tee: {i}: file does not exist");
       }
     }
 
