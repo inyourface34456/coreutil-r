@@ -23,42 +23,44 @@ static ESCAPES: [&str; 10] = [
     "\\\\", "\\a", "\\b", "\\c", "\\e", "\\f", "\\n", "\\r", "\\t", "\\v",
 ];
 
-static CHARS: [char; 10] = ['\\', '\x07', '\x08', '\x03', '\x1b', '\x0c', '\x0a', '\x0d', '\x09', '\x0b'];
+static CHARS: [char; 10] = [
+    '\\', '\x07', '\x08', '\x03', '\x1b', '\x0c', '\x0a', '\x0d', '\x09', '\x0b',
+];
 
 fn make_hex() -> [char; 256] {
-  let mut array: [char; 256] = [0 as char; 256];
-  for i in 0..=255 as u8 {
-    array[i as usize] = i as char;
-  }
-  array
+    let mut array: [char; 256] = [0 as char; 256];
+    for i in 0..=255 as u8 {
+        array[i as usize] = i as char;
+    }
+    array
 }
 
 fn make_lit() -> [String; 256] {
-  const ARRAY_REPEAT_VALUE: std::string::String = String::new();
-  let mut array: [String; 256] = [ARRAY_REPEAT_VALUE; 256];
-  for i in 0..=255 as u8 {
-    #[allow(unused_comparisons)]
-    if 0 <= i && i < 16 {
-      array[i as usize] = format!("\x5cx0{:x}", i);
-    } else {
-      array[i as usize] = format!("\x5cx{:x}", i);
+    const ARRAY_REPEAT_VALUE: std::string::String = String::new();
+    let mut array: [String; 256] = [ARRAY_REPEAT_VALUE; 256];
+    for i in 0..=255 as u8 {
+        #[allow(unused_comparisons)]
+        if 0 <= i && i < 16 {
+            array[i as usize] = format!("\x5cx0{:x}", i);
+        } else {
+            array[i as usize] = format!("\x5cx{:x}", i);
+        }
     }
-  }
-  array
+    array
 }
 
 fn replce_escapes(data: String) -> String {
-  let mut new_data = data;
-  for (i, c) in ESCAPES.iter().enumerate() {
-    new_data = new_data.replace(c, char_to_str(CHARS[i]).as_str());
-  }
-  if new_data.contains("\\x") {
-    for (i, c) in make_lit().iter().enumerate() {
-      let chars_fr = make_hex();
-      new_data = new_data.replace(c, char_to_str(chars_fr[i]).as_str());
+    let mut new_data = data;
+    for (i, c) in ESCAPES.iter().enumerate() {
+        new_data = new_data.replace(c, char_to_str(CHARS[i]).as_str());
     }
-  }
-  new_data
+    if new_data.contains("\\x") {
+        for (i, c) in make_lit().iter().enumerate() {
+            let chars_fr = make_hex();
+            new_data = new_data.replace(c, char_to_str(chars_fr[i]).as_str());
+        }
+    }
+    new_data
 }
 
 fn main() {
@@ -68,12 +70,12 @@ fn main() {
         Some(mut data) => {
             if !cli.newline {
                 if cli.escapes {
-                  data = replce_escapes(data);
+                    data = replce_escapes(data);
                 }
                 println!("{data}");
             } else {
                 if cli.escapes {
-                  data = replce_escapes(data);
+                    data = replce_escapes(data);
                 }
                 print!("{data}");
             }

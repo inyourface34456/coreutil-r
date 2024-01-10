@@ -1,7 +1,7 @@
 use clap::Parser;
 use common::*;
 use std::fs::{self, File};
-use std::io::Read;
+use std::io::{Read, Write};
 
 #[derive(Clone)]
 enum RemoveMethod {
@@ -75,26 +75,51 @@ struct Cli {
     zero: bool,
 }
 
-fn get_rand_bytes<const S: usize>(rand_source: &str) -> [u8; S] {
+fn get_rand_bytes(s: usize, rand_source: &String) -> Vec<u8> {
     let mut f = File::open(rand_source).unwrap();
-    let mut buffer = [0; S];
+    let mut buffer = vec![0; s];
 
-    f.read(&mut buffer).unwrap();
+    f.read_exact(&mut buffer).unwrap();
 
-    buffer.to_owned()
+    buffer
 }
 
 fn main() {
     let cli = Cli::parse();
     let file_size;
-    
+    let mut file;
+
     if path_exists(&cli.name) {
-      file_size = fs::metadata(&cli.name).unwrap().len();
+        file_size = fs::metadata(&cli.name).unwrap().len();
     } else {
-      safly_exit!("shred: {}: does not exist", &cli.name)
+        if cli.name == "-" {
+            file_size = input().len();
+        } else {
+            safly_exit!("shred: {}: does not exist", &cli.name)
+        }
     }
 
-    let mut file = fs::OpenOptions::new().write(true).truncate(true).open(&cli.name).unwrap();
+    for _ in 0..cli.iters {
+        file = fs::OpenOptions::new()
+            .write(true)
+            .truncate(true)
+            .open(&cli.name)
+            .unwrap();
 
-    
+        file.write_all(
+            get_rand_bytes(file_size.try_into().unwrap(), &cli.random_source).as_slice(),
+        )
+        .expect("but why");
+    }
+
+    if cli.zero {
+        file = fs::OpenOptions::new()
+            .write(true)
+            .truncate(true)
+            .open(&cli.name)
+            .unwrap();
+
+        file.write_all(vec![0; file_size.try_into().unwrap()].as_slice())
+            .expect("but why")
+    }
 }

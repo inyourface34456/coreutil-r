@@ -1,7 +1,7 @@
 use clap::Parser;
+use common::*;
 use std::thread::sleep;
 use std::time::Duration;
-use common::*;
 
 fn main() {
     let cli = CliOnlyOneArg::parse();

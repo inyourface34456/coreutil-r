@@ -1,8 +1,8 @@
 use clap::Parser;
 use common::*;
+use common::*;
 use regex::Regex;
 use std::fs;
-use common::*;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about)]

@@ -1,6 +1,6 @@
 #![feature(allow_internal_unstable)]
-use getch::Getch;
 use clap::Parser;
+use getch::Getch;
 use std::fs;
 use std::process::exit as exit_std;
 
@@ -35,9 +35,9 @@ pub fn input_bytes() -> Vec<u8> {
             '\x04' => break,
             '\n' => break,
             _ => {
-              // println!("{}", letter as u8);
-              buffer.push(letter as u8);
-            },
+                // println!("{}", letter as u8);
+                buffer.push(letter as u8);
+            }
         }
     }
     if letter == '\x0a' {
@@ -48,16 +48,16 @@ pub fn input_bytes() -> Vec<u8> {
 }
 
 pub fn char_to_str(subject: char) -> String {
-  let mut temp: [u8; 4] = [0; 4];
-  subject.encode_utf8(&mut temp);
-  let temp2: &str = std::str::from_utf8(&temp).unwrap();
-  temp2.to_owned()
+    let mut temp: [u8; 4] = [0; 4];
+    subject.encode_utf8(&mut temp);
+    let temp2: &str = std::str::from_utf8(&temp).unwrap();
+    temp2.to_owned()
 }
 
 #[derive(Parser)]
 #[command(author, version, about, long_about)]
 pub struct CliOnlyOneArg {
-    pub name: String
+    pub name: String,
 }
 
 pub fn path_exists(path: &str) -> bool {
@@ -70,7 +70,7 @@ pub fn path_exists(path: &str) -> bool {
 // }
 
 pub fn exit(code: i32) -> ! {
-  exit_std(code)
+    exit_std(code)
 }
 
 #[macro_export]
