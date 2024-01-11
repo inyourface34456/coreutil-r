@@ -1,3 +1,4 @@
+#![allow(internal_features)]
 #![feature(allow_internal_unstable)]
 use clap::Parser;
 use getch::Getch;
@@ -64,11 +65,6 @@ pub fn path_exists(path: &str) -> bool {
     fs::metadata(path).is_ok()
 }
 
-// pub fn safly_exit!(msg: &str) -> ! {
-//   eprintln!("{}", msg);
-//   exit(1)
-// }
-
 pub fn exit(code: i32) -> ! {
     exit_std(code)
 }
@@ -77,7 +73,7 @@ pub fn exit(code: i32) -> ! {
 #[allow_internal_unstable(print_internals, format_args_nl)]
 macro_rules! safly_exit  {
   () => {
-          print!("\n")
+          std::process::exit(1);
       };
       ($($arg:tt)*) => {{
           std::io::_eprint(std::format_args_nl!($($arg)*));

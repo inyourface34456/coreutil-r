@@ -52,7 +52,7 @@ struct Cli {
     #[arg(long = "random_source", default_value_t = String::from("/dev/random"))]
     random_source: String,
 
-    ///shred N bytes (prefixes like K, M, G accepted)
+    ///shred N bytes 
     #[arg(short = 's', long = "size", default_value_t = String::new())]
     num_bytes: String,
 
@@ -86,8 +86,52 @@ fn get_rand_bytes(s: usize, rand_source: &String) -> Vec<u8> {
     buffer
 }
 
-fn to_nearest_blk_size(num: u64, blk_size: u64) -> usize {
-  ((num*-1)/mult)*blk_size*-1+blk_size).try_into().unwrap()
+fn to_nearest_blk_size(num: i128, blk_size: i128) -> usize {
+  (((num*-1)/blk_size)*blk_size*-1+blk_size).try_into().unwrap()
+}
+
+fn make_numeric(value: String) -> usize {
+    value
+        .chars()
+        .filter_map(|x| 
+          if x.is_numeric() { 
+            Some(x) 
+          } else { 
+            None 
+          }
+        )
+        .collect::<String>()
+        .parse::<usize>()
+        .unwrap()
+}
+
+fn num_bytes_parser(value: String) -> usize {
+    let value = value.to_lowercase();
+
+    match value.parse::<usize>() {
+        Ok(dat) => dat,
+        Err(_) => {
+            if value.starts_with('k') {
+              make_numeric(value)*1000
+            } else if value.starts_with('m') {
+              make_numeric(value)*10000
+            } else if value.starts_with('g') {
+              make_numeric(value)*100000
+            } else if value.starts_with('t') {
+              make_numeric(value)*1000000
+            } else if value.starts_with('p') {
+              make_numeric(value)*10000000
+            } else if value.starts_with('e') {
+              make_numeric(value)*100000000
+            } else if value.starts_with('z') {
+              make_numeric(value)*1000000000
+            } else if value.starts_with('y') {
+              make_numeric(value)*10000000000
+            } else {
+              make_numeric(value)
+            }
+        }
+    }
 }
 
 fn main() {
@@ -96,48 +140,73 @@ fn main() {
       Some(dat) => dat,
       None => String::new()
     };
-    let file_size;
+    let file_size: u64;
     let mut file;
     let blk_size;
+    let num_bytes: usize;
 
-    if path_exists(&cli.name) {
-        let meta = fs::metadata(&cli.name).unwrap();
+    if path_exists(&name) {
+        let meta = fs::metadata(&name).unwrap();
         file_size = meta.len();
         blk_size = meta.blksize();
-    } else {
-        if cli.name == "-" || cli.name == "" {
-            file_size = input().len();
+        if cli.exact {
+          num_bytes = file_size as usize;
+        } else if cli.num_bytes != String::new() {
+          num_bytes = num_bytes_parser(cli.num_bytes)
         } else {
-            safly_exit!("shred: {}: does not exist", &cli.name)
+          num_bytes = to_nearest_blk_size(file_size.into(), blk_size.into());
+        }
+    } else {
+        if name == String::from("-") || name == String::new() {
+            file_size = match input() {
+              Some(dat) => dat.len().try_into().unwrap(),
+              None => safly_exit!("shred: could not read from stdin")
+            };
+            num_bytes = 0;
+        } else {
+            safly_exit!("shred: {}: does not exist", &name)
         }
     }
 
-    for _ in 0..cli.iters {
-      if cli.name == "-" || cli.name == "" {  
-          let data: String = get_rand_bytes(, &cli.random_source).into_iter().map(|x| x as char).collect();
-          print!("{}")
+    for i in 0..cli.iters {
+      if name == String::from("-") || name == String::new() {  
+          let data: String = get_rand_bytes(file_size.try_into().unwrap(), &cli.random_source).into_iter().map(|x| x as char).collect();
+          print!("{}", data)
       } else {
         file = fs::OpenOptions::new()
             .write(true)
             .truncate(true)
-            .open(&cli.name)
+            .open(&name)
             .unwrap();
 
         file.write_all(
-            get_rand_bytes(to_nearest_blk_size(file_size, blk_size), &cli.random_source).as_slice(),
+            get_rand_bytes(num_bytes, &cli.random_source).as_slice(),
         )
         .expect("but why");
       }
+
+      if cli.verbose {
+        println!("on the {i}th iteration");
+      }
     }
 
-    if cli.zero && !(cli.name == "-" || cli.name == "") {
+    if cli.zero && !(name == String::from("-") || name == String::new()) {
         file = fs::OpenOptions::new()
             .write(true)
             .truncate(true)
-            .open(&cli.name)
+            .open(&name)
             .unwrap();
 
-        file.write_all(vec![0; file_size.try_into().unwrap()].as_slice())
+        file.write_all(vec![0; num_bytes].as_slice())
             .expect("but why")
+    }
+
+    if cli.deleate_file {
+      match fs::remove_file(&name) {
+        Ok(_) => {},
+        Err(e) => {
+          safly_exit!("shred: {}: {}", &name, e.to_string());
+        }
+      }
     }
 }
